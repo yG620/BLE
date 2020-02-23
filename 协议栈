@@ -3,8 +3,16 @@
 设备A——advertiser（广播者），设备B——scanner或者observer（扫描者）
 开发者调用 
 send(0x53)
+
+协议栈如何处理呢？
+确定使用哪一个射频信道来进行传输，使用 2402M 这个信道频率
 send_LL(0x53,2402M) 
+
+设备B 怎么知道这个数据包是发给自己的还是其他人的？
+引入 access address 概念：指明接收者的身份，0x8E89BED6
 send_LL(0x53,2402M, 0x8E89BED6)
+
+
 send_LL(0x53,2402M, 0x8E89BED6, 0xE1022AAB753B)
 最终的空中包
 AA D6BE898E 3B75AB2A02E1 53 8EC7B2
